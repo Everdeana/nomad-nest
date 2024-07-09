@@ -29,41 +29,47 @@
 ## Installation
 
 ```bash
-pnpm install
+npm install
 ```
 
 ## Running the app
 
 Start app
+
 ```
-pnpm run start
+npm run start
 ```
 
 Start dev server
+
 ```
-pnpm run start:dev
+npm run start:dev
 ```
 
 Start prod server
+
 ```
-pnpm run start:prod
+npm run start:prod
 ```
 
 ## Test
 
 Tests
+
 ```
-pnpm run test
+npm run test
 ```
 
 E2E Tests
+
 ```
-pnpm run test:e2e
+npm run test:e2e
 ```
 
 Test Coverage
+
 ```
-pnpm run test:cov
+npm run test:cov
 ```
 
 ## Support
