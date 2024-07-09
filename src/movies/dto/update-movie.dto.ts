@@ -1,16 +1,18 @@
-import { IsNumber, IsString } from 'class-validator';
+import { PartialType } from '@nestjs/mapped-types';
+import { CreateMovieDTO } from './create-movie.dto';
 
+// import { IsNumber, IsString } from 'class-validator';
 // Version 1 : 선택적 인자 전달
-export class UpdateMovieDTO {
-  @IsString()
-  readonly title?: string;
-  @IsNumber()
-  readonly year?: number;
-  @IsString({ each: true })
-  readonly genres?: string[];
-  @IsString()
-  readonly director?: string;
-}
+// export class UpdateMovieDTO {
+//   @IsString()
+//   readonly title?: string;
+//   @IsNumber()
+//   readonly year?: number;
+//   @IsString({ each: true })
+//   readonly genres?: string[];
+//   @IsString()
+//   readonly director?: string;
+// }
 
 // Version 2 : Partial Type
-// export class UpdateMovieDTO extends Partial {}
+export class UpdateMovieDTO extends PartialType(CreateMovieDTO) {}

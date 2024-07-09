@@ -7,7 +7,7 @@ import {
   Patch,
   Body,
   Query,
-} from '@nestjs/common';
+} from '@nestjs/common'; // Res, Req를 사용한다면 위의 import 안에 추가
 import { MoviesService } from './movies.service';
 import { Movie } from './entities/movie.entity';
 import { CreateMovieDTO } from './dto/create-movie.dto';
@@ -16,6 +16,16 @@ import { UpdateMovieDTO } from './dto/update-movie.dto';
 @Controller('movies')
 export class MoviesController {
   constructor(private readonly moviesService: MoviesService) {}
+
+  // NestJS는 Express 위에서 돌아감
+  // Controller에서 Request, Response 객체가 필요하면 사용할 수 있음
+  // 아래와 같이 @Req, @Res로 사용하는건 좋은 방법은 아님
+  // @Get()
+  // getAll(@Req() req, @Res() res): Movie[] {
+  //   res.json();
+  //   return this.moviesService.getAll();
+  // }
+  // Express에서 Fastify로 번환시킬 수 있기 때문(2개의 프레임워크랑 작동)
 
   @Get()
   getAll(): Movie[] {
