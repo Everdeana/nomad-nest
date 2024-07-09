@@ -16,9 +16,10 @@ describe('AppController (e2e)', () => {
   });
 
   it('/ (GET)', () => {
+    // GET으로 API Request 보냄
     return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
+      .get('/') // URL 받고
+      .expect(200) // 200 받고
+      .expect('Welcome To My Movie API'); // H~! 받음
   });
 });

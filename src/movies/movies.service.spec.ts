@@ -6,6 +6,7 @@ describe('MoviesService', () => {
   let service: MoviesService;
 
   beforeEach(async () => {
+    // beforeEach, afterEach, beforeAll, afterAll
     const module: TestingModule = await Test.createTestingModule({
       providers: [MoviesService],
     }).compile();
@@ -86,6 +87,30 @@ describe('MoviesService', () => {
       const afterDelete = service.getAll().length;
       console.log(beforeDelete, afterDelete);
       expect(afterDelete).toBeGreaterThan(beforeDelete);
+    });
+  });
+
+  describe('update', () => {
+    it('should throw NotFoundException', () => {
+      service.create({
+        title: 'testTitle',
+        genres: ['testGenre'],
+        year: 2000,
+        director: 'testDirector',
+      });
+      service.update(1, { title: 'Updated Title' });
+      const movie = service.getOne(1);
+      console.log(movie);
+      expect(movie.title).toEqual('Updated Title');
+    });
+
+    it('should return 404 error', () => {
+      try {
+        service.update(99, {});
+      } catch (e) {
+        expect(e).toBeInstanceOf(NotFoundException);
+        expect(e.message).toEqual('Movie With ID 99 Not Found.');
+      }
     });
   });
 });
